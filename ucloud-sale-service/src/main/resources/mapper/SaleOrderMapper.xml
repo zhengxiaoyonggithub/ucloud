@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.ucloud.sale.service.dao.SaleOrderMapper">
+
+    <insert id="saveOrder" parameterType="com.ucloud.sale.service.pojo.SaleOrder">
+        insert into sale_order(orderid,sku,price,createtime,updatetime)
+        values(#{orderid},#{sku},#{price},#{createTime},#{updateTime})
+    </insert>
+</mapper>

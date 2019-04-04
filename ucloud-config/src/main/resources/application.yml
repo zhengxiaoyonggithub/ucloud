@@ -1,0 +1,24 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: ucloud-config
+# 配置读取本地配置文件
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config-repo
+# 配置不进行安全校验
+management:
+  security:
+    enabled: false
+# 配置连接eureka服务器
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

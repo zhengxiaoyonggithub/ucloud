@@ -1,0 +1,40 @@
+server:
+  port: 7001
+spring:
+  profiles:
+    active: dev
+    name: ucloud-gateway-zuul
+  cloud:
+    config:
+      discovery:
+        serviceId: ucloud-config
+        enabled: true
+      profile: ${spring.profiles.active}
+      name: ucloud-gateway-zuul
+  application:
+    name: ucloud-gateway-zuul
+  rabbitmq:
+    host: 172.16.215.141
+    port: 5672
+    username: guest
+    password: guest
+zuul:
+  routes:
+    sale:
+      path: /sale/*
+      serviceId: ucloud-sale-service
+    basic:
+      path: /basic/*
+      serviceId: ucloud-basic-service
+  host:
+    max-total-connections: 200 #目标主机的最大连接数，默认值为200
+    max-per-route-connections: 20 #每个主机的初始连接数，默认值为20
+  ignored-patterns: /sale/noRouter # 配置忽略路由
+  sensitive-headers: accept-language,cookie # 配置敏感信息的传递
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'

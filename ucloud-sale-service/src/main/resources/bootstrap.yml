@@ -1,0 +1,22 @@
+server:
+  port: 10001
+spring:
+  profiles:
+    active: dev
+    name: ucloud-sale-service
+  cloud:
+    config:
+      discovery:
+        service-id: ucloud-config
+      profile: ${spring.profiles.active}
+  rabbitmq:
+    host: 172.16.215.141
+    port: 5672
+    username: guest
+    password: guest
+# 开启 /hystrix.stream
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

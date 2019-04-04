@@ -1,0 +1,24 @@
+#server:
+#  port: 10000
+spring:
+  profiles:
+    active: dev
+    name: ucloud-basic-service
+  cloud:
+    config:
+      discovery:
+        service-id: ucloud-config
+      profile: ${spring.profiles.active}
+  application:
+    name: ucloud-basic-service
+  rabbitmq:
+    host: 172.16.215.141
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
